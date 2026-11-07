@@ -1,0 +1,525 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(239, 68, 68, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(220, 38, 38, 0.03) 0%, transparent 50%);
+    animation: gradientShift 20s ease infinite;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@keyframes gradientShift {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(10%, 10%) rotate(180deg); }
+}
+
+.container {
+    width: 100%;
+    max-width: 480px;
+    position: relative;
+    z-index: 1;
+}
+
+.donate-card {
+    background: #141414;
+    border: 1px solid #1f1f1f;
+    border-radius: 20px;
+    padding: 48px 36px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(239, 68, 68, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.donate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.6), transparent);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.family-label {
+    color: #ef4444;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 8px 18px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 6px;
+    background: rgba(239, 68, 68, 0.08);
+}
+
+.avatar-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    padding: 3px;
+    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.3),
+                0 0 0 1px rgba(239, 68, 68, 0.2);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.avatar-wrapper:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(239, 68, 68, 0.4);
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #0a0a0a;
+    border: 2px solid #141414;
+}
+
+.author-section {
+    text-align: center;
+    margin-bottom: 36px;
+}
+
+.support-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.author-name {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    color: #ffffff;
+    text-shadow: 0 0 40px rgba(239, 68, 68, 0.3);
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 15px;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.donate-form {
+    margin-bottom: 32px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 13px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: #0a0a0a;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    padding: 15px 18px;
+    color: #fff;
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+    border-color: rgba(239, 68, 68, 0.3);
+    background: #0f0f0f;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ef4444;
+    background: #0f0f0f;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.form-group textarea {
+    min-height: 110px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.donate-button {
+    width: 100%;
+    background: #ef4444;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 17px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.donate-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: left 0.5s ease;
+}
+
+.donate-button:hover::before {
+    left: 100%;
+}
+
+.donate-button:hover {
+    transform: translateY(-2px);
+    background: #dc2626;
+    box-shadow: 0 8px 24px rgba(239, 68, 68, 0.5);
+}
+
+.donate-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+}
+
+.arrow {
+    font-size: 18px;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.donate-button:hover .arrow {
+    transform: translateX(4px);
+}
+
+.footer {
+    text-align: center;
+    padding-top: 24px;
+    margin-top: 8px;
+    border-top: 1px solid #1f1f1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.footer a {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.footer a:hover {
+    color: #ef4444;
+}
+
+.separator {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 12px;
+}
+
+/* Страница политики */
+.modal-header {
+    padding: 0 0 28px 0;
+    border-bottom: 1px solid #1f1f1f;
+    margin-bottom: 28px;
+}
+
+.info-label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.modal-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.modal-body {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+}
+
+.intro-text {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+.section {
+    margin-bottom: 24px;
+    padding: 20px;
+    background: #0a0a0a;
+    border-radius: 10px;
+    border: 1px solid #1f1f1f;
+}
+
+.section h3 {
+    color: #ef4444;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+}
+
+.section p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.section a {
+    color: #ef4444;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.section a:hover {
+    color: #dc2626;
+    border-bottom-color: #dc2626;
+}
+
+.footer-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 32px 0 24px;
+    padding-top: 24px;
+    border-top: 1px solid #1f1f1f;
+    line-height: 1.7;
+}
+
+.return-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ef4444;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 12px 24px;
+    border-radius: 10px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.return-link:hover {
+    background: rgba(239, 68, 68, 0.15);
+    transform: translateX(-3px);
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 16px;
+    }
+    
+    .donate-card {
+        padding: 32px 24px;
+        border-radius: 16px;
+    }
+    
+    .header {
+        margin-bottom: 20px;
+    }
+    
+    .family-label {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+    
+    .avatar-section {
+        margin-bottom: 20px;
+    }
+    
+    .avatar-wrapper {
+        width: 96px;
+        height: 96px;
+    }
+    
+    .author-section {
+        margin-bottom: 25px;
+    }
+    
+    .support-label {
+        font-size: 10px;
+        margin-bottom: 8px;
+    }
+    
+    .author-name {
+        font-size: 28px;
+        letter-spacing: 1.5px;
+        margin-bottom: 12px;
+    }
+    
+    .description {
+        font-size: 13px;
+    }
+    
+    .form-group {
+        margin-bottom: 15px;
+    }
+    
+    .form-group label {
+        font-size: 12px;
+        margin-bottom: 6px;
+    }
+    
+    .form-group input {
+        font-size: 14px;
+        padding: 14px 16px;
+        border-radius: 10px;
+    }
+    
+    .form-group textarea {
+        font-size: 14px;
+        padding: 14px 16px;
+        min-height: 100px;
+        border-radius: 10px;
+    }
+    
+    .donate-button {
+        font-size: 15px;
+        padding: 15px 20px;
+        font-weight: 700;
+        border-radius: 10px;
+    }
+    
+    .footer {
+        flex-direction: column;
+        gap: 6px;
+        padding-top: 15px;
+        margin-top: 20px;
+    }
+    
+    .footer a {
+        font-size: 11px;
+    }
+    
+    .separator {
+        display: none;
+    }
+    
+    .modal-header {
+        padding: 0 0 20px 0;
+        margin-bottom: 20px;
+    }
+    
+    .modal-header h2 {
+        font-size: 20px;
+    }
+    
+    .info-label {
+        font-size: 10px;
+        margin-bottom: 8px;
+    }
+    
+    .intro-text {
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+    
+    .section {
+        margin-bottom: 20px;
+    }
+    
+    .section h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+    
+    .section p {
+        font-size: 12px;
+    }
+    
+    .footer-text {
+        font-size: 11px;
+        margin: 20px 0 15px;
+        padding-top: 15px;
+    }
+    
+    .return-link {
+        font-size: 13px;
+    }
+    
+    .container {
+        padding: 5px;
+    }
+}
